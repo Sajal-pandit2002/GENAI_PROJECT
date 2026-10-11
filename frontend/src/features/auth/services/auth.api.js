@@ -39,6 +39,9 @@ export const getMe = async () => {
     const response = await api.get("/get-me");
     return response.data;
   } catch (error) {
+    if (error.response?.status === 401) {
+      return null;
+    }
     throw new Error(error.response?.data?.message || "Get user failed");
   }
 };

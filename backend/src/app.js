@@ -6,13 +6,13 @@ const app = express();
 
 /* all middleware */
 app.use(express.json());
-app.use(cookiePerser());
 app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
   }),
 );
+app.use(cookiePerser());
 
 /* using all the routes here */
 app.use("/api/auth", authRouter);

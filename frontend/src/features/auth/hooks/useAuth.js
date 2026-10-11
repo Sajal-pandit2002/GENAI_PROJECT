@@ -74,12 +74,17 @@ export const useAuth = () => {
   // };
   useEffect(() => {
     const getAndSetUser = async () => {
-      const data = await getMe();
-      setUser(data.user);
-      setLoading(false);
+      try {
+        const data = await getMe();
+        setUser(data?.user ?? null);
+      } catch (error) {
+        console.error("Failed to restore the authenticated user:", error);
+      } finally {
+        setLoading(false);
+      }
     };
     getAndSetUser();
-  }, []);
+  }, [setLoading, setUser]);
   return {
     user,
     loading,
