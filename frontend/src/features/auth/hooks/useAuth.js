@@ -1,10 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../auth.context.jsx";
 import {
   loginUser,
   registerUser,
   logoutUser,
-  getMe,
 } from "../services/auth.api.js";
 
 export const useAuth = () => {
@@ -59,32 +58,6 @@ export const useAuth = () => {
     }
   };
 
-  // // Function to fetch the current user
-  // const fetchCurrentUser = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const data = await getMe();
-  //     setUser(data.user);
-  //     return { success: data.success, message: data.message };
-  //   } catch (error) {
-  //     return { success: false, message };
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-  useEffect(() => {
-    const getAndSetUser = async () => {
-      try {
-        const data = await getMe();
-        setUser(data?.user ?? null);
-      } catch (error) {
-        console.error("Failed to restore the authenticated user:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    getAndSetUser();
-  }, [setLoading, setUser]);
   return {
     user,
     loading,

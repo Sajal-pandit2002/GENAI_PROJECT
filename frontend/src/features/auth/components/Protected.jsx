@@ -1,17 +1,12 @@
 import { Navigate } from "react-router";
 import { useAuth } from "../hooks/useAuth";
-
-import React from "react";
+import LoadingScreen from "../../../components/LoadingScreen.jsx";
 
 const Protected = ({ children }) => {
   const { loading, user } = useAuth();
 
   if (loading) {
-    return (
-      <main>
-        <h1>Loading....</h1>
-      </main>
-    );
+    return <LoadingScreen message="Checking your sign-in..." />;
   }
   if (!user) {
     return <Navigate to={"/login"} />;

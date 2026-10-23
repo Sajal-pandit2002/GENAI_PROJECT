@@ -138,6 +138,11 @@ const interviewReportJsonSchema = {
         required: ["day", "focus", "tasks"],
       },
     },
+    title: {
+      type: "string",
+      description:
+        "The title of the job for which the interview report is generated.",
+    },
   },
 
   required: [
@@ -146,6 +151,7 @@ const interviewReportJsonSchema = {
     "behavioralQuestions",
     "skillGaps",
     "preparationPlan",
+    "title",
   ],
 };
 
@@ -188,6 +194,7 @@ const interviewReportSchema = z.object({
       tasks: z.array(z.string()),
     }),
   ),
+  title: z.string(),
 });
 
 export { interviewReportJsonSchema, interviewReportSchema };

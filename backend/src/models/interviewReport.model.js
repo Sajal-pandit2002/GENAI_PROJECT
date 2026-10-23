@@ -1,4 +1,4 @@
-import mongoose, { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 /**
  * -job description schema
  * -resume test
@@ -101,6 +101,14 @@ const interviewReportSchema = new mongoose.Schema(
     behavioralQuestions: [behavioralQuestionSchema],
     skillGaps: [skillGapSchema],
     preparationPlan: [preparationPlaneSchema],
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    },
+    title: {
+      type: String,
+      required: [true, "Title is required"],
+    },
   },
   { timestamps: true },
 );

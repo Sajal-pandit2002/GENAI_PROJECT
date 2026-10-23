@@ -78,7 +78,6 @@ async function generateInterviewReport({
 
   const parsedResponse = JSON.parse(rawText);
   const validatedReport = interviewReportSchema.parse(parsedResponse);
-  // return validatedReport;
   return validatedReport;
 }
 

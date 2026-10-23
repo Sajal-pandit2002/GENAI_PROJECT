@@ -1,0 +1,37 @@
+.loading-screen {
+  display: flex;
+  min-height: 55svh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 13px;
+  padding: 30px;
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+  color: #c2c8d3;
+
+  p {
+    margin: 0;
+    font-size: 12px;
+  }
+
+  &__spinner {
+    width: 34px;
+    height: 34px;
+    border: 3px solid rgba(255, 255, 255, 0.14);
+    border-top-color: #e1034d;
+    border-radius: 50%;
+    animation: loading-screen-spin 700ms linear infinite;
+  }
+}
+
+@keyframes loading-screen-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen__spinner {
+    animation-duration: 1.5s;
+  }
+}
